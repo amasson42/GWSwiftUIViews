@@ -4,8 +4,8 @@ import SwiftUI
 @available(iOS 13.0, macOS 10.15, *)
 public struct ActivityIndicatorView: UIViewRepresentable {
     
-    @Binding var animating: Bool
-    var style: UIActivityIndicatorView.Style
+    @Binding public var animating: Bool
+    public let style: UIActivityIndicatorView.Style
     
     public func makeUIView(context: Context) -> UIActivityIndicatorView {
         let view = UIActivityIndicatorView()
