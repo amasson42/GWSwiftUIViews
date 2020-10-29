@@ -3,6 +3,11 @@ import SwiftUI
 
 @available(macOS 15.0, *)
 public struct GreenView: View {
+    
+    public init() {
+        
+    }
+    
     public var body: some View {
         Color.green
     }
