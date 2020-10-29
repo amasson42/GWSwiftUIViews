@@ -1,7 +1,17 @@
 
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, *)
+@available(macOS 15.0, *)
+public struct GreenView: View {
+    public var body: some View {
+        Color.green
+    }
+}
+
+#if os(macOS)
+
+#else
+@available(tvOS 13.0, iOS 13.0, *)
 public struct ActivityIndicatorView: UIViewRepresentable {
     
     @Binding public var animating: Bool
@@ -22,3 +32,4 @@ public struct ActivityIndicatorView: UIViewRepresentable {
     }
     
 }
+#endif
