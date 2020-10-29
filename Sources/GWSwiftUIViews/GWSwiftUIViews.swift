@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-@available(macOS 15.0, *)
+@available(OSX 10.15, *)
 public struct GreenView: View {
     
     public init() {
