@@ -37,6 +37,10 @@ public extension AxeGraphViewDataSource {
 @available(OSX 10.15, *)
 public struct AxeGraphView<DataSource: AxeGraphViewDataSource>: View {
     
+    public init(dataSource: DataSource) {
+        self.dataSource = dataSource
+    }
+    
     @ObservedObject public var dataSource: DataSource
     
     private let segmentWidth: CGFloat = 5.0
