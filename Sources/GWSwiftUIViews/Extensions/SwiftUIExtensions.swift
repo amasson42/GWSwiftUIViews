@@ -9,7 +9,7 @@
 import SwiftUI
 
 @available(OSX 10.15, *)
-extension Path {
+public extension Path {
     
     mutating func addSegment(from: CGPoint, to: CGPoint) {
         self.move(to: from)
@@ -18,7 +18,7 @@ extension Path {
     
 }
 
-struct MouseGestureView: NSViewRepresentable {
+public struct MouseGestureView: NSViewRepresentable {
     
     let moveCallback: ((CGPoint) -> ())?
     let clickCallback: ((CGPoint) -> ())?
@@ -32,7 +32,7 @@ struct MouseGestureView: NSViewRepresentable {
         self.trackCallback = track
     }
     
-    func makeNSView(context: Context) -> NSView {
+    public func makeNSView(context: Context) -> NSView {
         let view = NSView()
         let clickGesture = NSClickGestureRecognizer(target: context.coordinator,
                                                action: #selector(Coordinator.click))
@@ -43,15 +43,15 @@ struct MouseGestureView: NSViewRepresentable {
         return view
     }
     
-    func updateNSView(_ nsView: NSView, context: Context) {
+    public func updateNSView(_ nsView: NSView, context: Context) {
         
     }
     
-    func makeCoordinator() -> Coordinator {
+    public func makeCoordinator() -> Coordinator {
         return Coordinator(gestureView: self)
     }
     
-    class Coordinator: NSObject {
+    public class Coordinator: NSObject {
         var clickCallback: ((CGPoint) -> Void)?
         var moveCallback: ((CGPoint) -> Void)?
         var trackCallback: ((Bool) -> Void)?

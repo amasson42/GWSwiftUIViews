@@ -9,7 +9,7 @@
 import SwiftUI
 
 @available(OSX 10.15, *)
-protocol AxeGraphViewDataSource: ObservableObject {
+public protocol AxeGraphViewDataSource: ObservableObject {
     var points: [CGPoint] { get }
     var coloredPoints: [Color: [CGPoint]] { get }
     
@@ -28,16 +28,16 @@ protocol AxeGraphViewDataSource: ObservableObject {
 }
 
 @available(OSX 10.15, *)
-extension AxeGraphViewDataSource {
+public extension AxeGraphViewDataSource {
     var coloredPoints: [Color: [CGPoint]] { [:] }
     var xFormat: String { ".2" }
     var yFormat: String { ".2" }
 }
 
 @available(OSX 10.15, *)
-struct AxeGraphView<DataSource: AxeGraphViewDataSource>: View {
+public struct AxeGraphView<DataSource: AxeGraphViewDataSource>: View {
     
-    @ObservedObject var dataSource: DataSource
+    @ObservedObject public var dataSource: DataSource
     
     private let segmentWidth: CGFloat = 5.0
     private let paddingLength: CGFloat = 17.0
@@ -46,7 +46,7 @@ struct AxeGraphView<DataSource: AxeGraphViewDataSource>: View {
     @State private var lastDragValue: CGSize?
     @State private var tappedPointIndex: Int = -1
     
-    var body: some View {
+    public var body: some View {
         GeometryReader<AnyView> { proxy in
             
             let xName = self.dataSource.xName
@@ -224,13 +224,13 @@ struct AxeGraphView<DataSource: AxeGraphViewDataSource>: View {
         
     }
     
-    struct NamedPoint: View {
+    public struct NamedPoint: View {
         
         let showInfo: Bool
         let info: String
         private let size = CGSize(width: 10, height: 10)
         
-        var body: some View {
+        public var body: some View {
             
             Path { path in
                 path.addSegment(from: CGPoint(x: -0.5 * size.width, y: 0.0),
